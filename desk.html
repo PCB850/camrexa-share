@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CAMREXA desk — local leads</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="config.js"></script>
+  <script src="tracking.js"></script>
+</head>
+<body>
+  <header class="top"><a class="mark" href="index.html"><img src="brand/camrexa-logo.png" alt="CAMREXA" /></a></header>
+  <main class="prose">
+    <p class="kicker">Local only</p>
+    <h1>Leads in this browser</h1>
+    <p class="fine">This page reads localStorage. It is not the company CRM. Use it to QA the funnel on a phone.</p>
+    <pre id="out" class="card" style="white-space:pre-wrap"></pre>
+  </main>
+  <script>
+    const leads = localStorage.getItem("camrexa_leads");
+    const events = localStorage.getItem("camrexa_events");
+    const attr = localStorage.getItem("camrexa_attribution");
+    document.getElementById("out").textContent = JSON.stringify({
+      attribution: JSON.parse(attr || "{}"),
+      leads: JSON.parse(leads || "[]"),
+      events: JSON.parse(events || "[]")
+    }, null, 2);
+  </script>
+</body>
+</html>

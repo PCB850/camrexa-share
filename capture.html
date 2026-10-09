@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CAMREXA — capture</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="config.js"></script>
+  <script src="tracking.js"></script>
+</head>
+<body>
+  <header class="top">
+    <a class="mark" href="index.html"><img src="brand/camrexa-logo.png" alt="CAMREXA" /></a>
+  </header>
+  <main class="prose">
+    <p class="kicker">Lead capture</p>
+    <h1>Send the building however you found us.</h1>
+
+    <div class="card">
+      <h2>Not on the list</h2>
+      <form class="form" id="other-form">
+        <label>Building name</label>
+        <input name="building" required placeholder="Exact condo name" />
+        <label>Email</label>
+        <input name="email" type="email" required />
+        <label>Phone / text</label>
+        <input name="phone" type="tel" />
+        <button type="submit">Request a Health Check</button>
+      </form>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h2>Direct</h2>
+      <p>Email the desk: <a href="mailto:chad@chadmiller.com?subject=CAMREXA%20Check%20My%20Condo">chad@chadmiller.com</a></p>
+      <p>Facebook comment: building name only. We reply Strong / Watch / High Risk and move the file off the thread.</p>
+      <p>Instagram DM: same rule.</p>
+    </div>
+  </main>
+  <script>
+    document.getElementById("other-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const f = e.target;
+      const lead = {
+        building: f.building.value,
+        email: f.email.value,
+        phone: f.phone.value,
+        intent: "unlisted",
+        subject: "CAMREXA unlisted building"
+      };
+      if (window.camrexaEvent) window.camrexaEvent("Lead", { content_name: lead.building, status: "unlisted" });
+      if (window.camrexaSendLead) window.camrexaSendLead(lead);
+      location.href = "thanks.html";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CAMREXA — Check My Condo</title>
+  <meta name="description" content="CAMREXA HOA Health Check for Panama City Beach condos. The listing price is public. The reserve hole is not." />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="config.js"></script>
+  <script src="tracking.js"></script>
+</head>
+<body>
+  <header class="top">
+    <a class="mark" href="index.html"><img src="brand/camrexa-logo.png" alt="CAMREXA" /></a>
+    <nav>
+      <a href="index.html">Check My Condo</a>
+      <a href="method.html">Method</a>
+      <a href="report.html">$149 Report</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <p class="kicker">Panama City Beach · HOA intelligence</p>
+    <h1>Is this condo<br>HOA healthy?</h1>
+    <p class="lede">The listing price is public. The reserve hole is not. CAMREXA reads eight inputs on the building and keeps the ledger off social.</p>
+    <form id="check-form" class="card form" action="check.html" method="get">
+      <label for="building">Building</label>
+      <select id="building" name="b" required></select>
+      <label for="intent">I am</label>
+      <select id="intent" name="intent" required>
+        <option value="buyer">Buying</option>
+        <option value="owner">An owner</option>
+        <option value="agent">An agent</option>
+        <option value="investor">Investing</option>
+      </select>
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required placeholder="you@email.com" />
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" type="tel" placeholder="Optional" />
+      <button type="submit">Get the free Health Check</button>
+      <p class="fine">Free HOA Health Check™. Grades stay private. Not an appraisal, inspection, or legal opinion.</p>
+      <p class="fine"><a href="capture.html">More ways to send a building</a> · Instagram DM · Facebook lead form · text</p>
+    </form>
+  </main>
+
+  <section class="grid3">
+    <article>
+      <h2>01</h2>
+      <p>Pick the building.</p>
+    </article>
+    <article>
+      <h2>02</h2>
+      <p>See Strong / Watch / High Risk.</p>
+    </article>
+    <article>
+      <h2>03</h2>
+      <p>Unlock the $149 file if you need the ledger.</p>
+    </article>
+  </section>
+
+  <footer>
+    <p>CAMREXA · Real Estate Intelligence</p>
+    <p><a href="method.html">Method</a> · <a href="legal.html">Terms</a> · <a href="watch.html">HOA Watch</a></p>
+  </footer>
+  <script src="buildings.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
