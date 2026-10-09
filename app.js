@@ -21,9 +21,12 @@
 
   const form = document.getElementById("check-form");
   if (form) {
-    form.addEventListener("submit", function () {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const buildingId = document.getElementById("building").value;
+      if (!buildingId) return;
       const lead = {
-        building: document.getElementById("building").value,
+        building: buildingId,
         intent: document.getElementById("intent").value,
         email: document.getElementById("email").value,
         phone: document.getElementById("phone").value,
@@ -36,6 +39,7 @@
       localStorage.setItem("camrexa_last_lead", JSON.stringify(lead));
       if (window.camrexaEvent) window.camrexaEvent("Lead", { content_name: lead.building, status: lead.intent });
       if (window.camrexaSendLead) window.camrexaSendLead(lead);
+      location.href = "check.html?b=" + encodeURIComponent(buildingId);
     });
   }
 
@@ -45,15 +49,35 @@
     });
   });
 
+  const paid = document.getElementById("paid-form");
+  if (paid) {
+    const q = new URLSearchParams(location.search).get("b");
+    const match = buildings.find((x) => x.id === q);
+    const field = document.getElementById("paid-building");
+    if (field && match) field.value = match.name;
+    else if (field && q) field.value = q;
+    paid.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const lead = {
+        building: field ? field.value : "",
+        email: paid.email.value,
+        phone: paid.phone.value,
+        intent: "report",
+        subject: "CAMREXA $149 report"
+      };
+      if (window.camrexaEvent) window.camrexaEvent("InitiateCheckout", { content_name: lead.building, value: 149, currency: "USD" });
+      if (window.camrexaSendLead) window.camrexaSendLead(lead);
+      location.href = "thanks.html";
+    });
+  }
+
   const result = document.getElementById("result");
   if (result) {
     const params = new URLSearchParams(location.search);
     const id = params.get("b");
-    const email = params.get("email") || "";
-    const intent = params.get("intent") || "";
     const building = buildings.find((x) => x.id === id);
     if (!building) {
-      result.innerHTML = "<p>Building not on the desk yet. Leave the name on the form and we will run the Health Check.</p>";
+      result.innerHTML = "<p>Building not on the desk yet. <a href=\"capture.html\">Send the name</a> and we will run the Health Check.</p>";
       return;
     }
     if (window.camrexaEvent) window.camrexaEvent("ViewContent", { content_name: building.name, content_category: building.band });
@@ -70,7 +94,7 @@
       "</h1><p>" +
       copy[building.band] +
       "</p>" +
-      "<ul>" +
+      "<ul class=\"lock\">" +
       "<li>Reserves — locked</li>" +
       "<li>Assessments — locked</li>" +
       "<li>Insurance — locked</li>" +
@@ -79,17 +103,11 @@
       "<li>Debt — locked</li>" +
       "</ul>" +
       '<p class="fine">Numeric score, reserve cash, and the source file stay in the $149 Condo Intelligence Report™.</p>' +
-      '<p class="fine">Lead: ' +
-      (email || "saved locally") +
-      (intent ? " · " + intent : "") +
-      "</p>" +
       '<p><a class="btn" data-event="InitiateCheckout" data-content="' +
       building.id +
       '" href="report.html?b=' +
       encodeURIComponent(building.id) +
-      '">Unlock the $149 report</a> <a class="btn" data-event="Subscribe" data-content="' +
-      building.id +
-      '" href="watch.html?b=' +
+      '">Unlock the $149 report</a> <a class="btn" href="watch.html?b=' +
       encodeURIComponent(building.id) +
       '">Join HOA Watch</a></p>';
   }
