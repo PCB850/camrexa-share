@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CAMREXA — Building Health Check</title>
+  <meta name="description" content="CAMREXA HOA Health Check. Free band; the full file is in the $149 Condo Intelligence Report." />
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="/config.js"></script>
+  <script src="/tracking.js"></script>
+</head>
+<body>
+  <header class="top">
+    <a class="mark" href="/"><img src="/brand/camrexa-logo.png" alt="CAMREXA" /></a>
+    <nav>
+      <a href="/">Check My Condo</a>
+      <a href="/sample">Sample</a>
+      <a href="#" id="account-link" hidden></a>
+    </nav>
+  </header>
+
+  <main class="prose building">
+    <p class="kicker">Free HOA Health Check™</p>
+    <section id="teaser" aria-live="polite"><p class="fine">Loading…</p></section>
+
+    <section id="locked" class="card locked" hidden>
+      <h2>Full building file</h2>
+      <ul class="lock">
+        <li>HOA dues by unit type and what they cover</li>
+        <li>Pets, parking, golf carts and rental rules</li>
+        <li>SIRS and milestone inspection status</li>
+        <li>Special assessments, loans, litigation, insurance</li>
+        <li>Recent sales and every source, dated</li>
+      </ul>
+      <button type="button" id="unlock-btn" data-event="InitiateCheckout">Unlock full report $149</button>
+      <p class="fine" id="unlock-msg"></p>
+      <details id="signin-box">
+        <summary>Already bought it? Sign in</summary>
+        <form id="signin-form" class="form">
+          <label for="signin-email">Email you paid with</label>
+          <input id="signin-email" type="email" required autocomplete="email" placeholder="you@email.com" />
+          <button type="submit">Email me a sign-in link</button>
+          <p class="fine" id="signin-msg"></p>
+        </form>
+      </details>
+      <p class="fine">One building, one-time $149. Not an appraisal, inspection, or legal opinion. <a href="/legal">Terms</a></p>
+    </section>
+
+    <section id="full" hidden></section>
+  </main>
+
+  <footer>
+    <p>CAMREXA · Real Estate Intelligence</p>
+    <p><a href="/method">Method</a> · <a href="/legal">Terms</a> · <a href="/watch">HOA Watch</a></p>
+  </footer>
+  <script src="/auth.js"></script>
+  <script src="/building-page.js"></script>
+</body>
+</html>

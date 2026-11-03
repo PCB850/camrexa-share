@@ -105,7 +105,7 @@
       '<p class="fine">Numeric score, reserve cash, and the source file stay in the $149 Condo Intelligence Report™.</p>' +
       '<p><a class="btn" data-event="InitiateCheckout" data-content="' +
       building.id +
-      '" href="report.html?b=' +
+      '" href="/b/' +
       encodeURIComponent(building.id) +
       '">Unlock the $149 report</a> <a class="btn" href="watch.html?b=' +
       encodeURIComponent(building.id) +

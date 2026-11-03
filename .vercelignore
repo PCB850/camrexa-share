@@ -1,0 +1,4 @@
+# Keep build/ops files off the public static site.
+supabase/
+scripts/
+README.md
