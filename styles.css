@@ -44,3 +44,23 @@ footer { padding: 24px; border-top: 1px solid var(--line); color: var(--gray); f
   .grid3 { grid-template-columns: 1fr; }
   .hero { padding-top: 32px; }
 }
+
+/* Per-building page (/b/<slug>) */
+.building h2 { font-size: 20px; margin: 0 0 12px; }
+.locked { margin-top: 24px; }
+.locked details { margin-top: 16px; }
+.locked summary { cursor: pointer; color: var(--purpledk); font-weight: 700; }
+.rpt { margin-top: 16px; }
+.rpt .row { display: grid; grid-template-columns: 200px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+.rpt .row:first-of-type { border-top: 0; }
+.rpt .k { color: var(--gray); font-size: 14px; }
+.rpt .v ul { margin: 0; padding-left: 18px; }
+.kv { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0; }
+.kv dt { color: var(--gray); text-transform: capitalize; }
+.kv dd { margin: 0; }
+.cite { font-size: 12px; vertical-align: super; }
+.sources { padding-left: 20px; word-break: break-all; font-size: 14px; }
+button[disabled] { opacity: .6; cursor: default; }
+@media (max-width: 700px) {
+  .rpt .row { grid-template-columns: 1fr; gap: 2px; }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "camrexa-share",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "load:profiles": "node scripts/load_profiles.mjs"
+  }
+}
