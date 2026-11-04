@@ -84,7 +84,8 @@
     const copy = {
       "HIGH RISK": "This is High Risk. That does not mean never buy. It means price the remaining work into the deal.",
       WATCH: "This is Watch. Work is coming or the public file is incomplete. Do not use monthly dues as the whole story.",
-      STRONG: "This screens Strong on the factors we can share here. Still pull the budget, SIRS, insurance dec page, and estoppel."
+      STRONG: "This screens Strong on the factors we can share here. Still pull the budget, SIRS, insurance dec page, and estoppel.",
+      "NOT YET RATED": "Not rated yet. We publish a band only once a dated primary document (SIRS, budget, insurance dec page, or milestone report) backs it. The $149 report pulls what is on file today."
     };
     result.innerHTML =
       '<p class="band">' +
